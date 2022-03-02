@@ -1,3 +1,11 @@
+.backcolor{
+    background-color: rgb(247, 250, 252);
+}
+.headclr{
+    background-color: rgb(26, 25, 24);
+    color: white;
+}
+
 .error{
     display: none;
 }
