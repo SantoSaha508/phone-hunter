@@ -50,8 +50,7 @@ const displaySearchResult = phones => {
         </div>
         `;
         searchResult.appendChild(div);
-    })
-
+    });
 }
 
 const phoneDetails = (phoneId) => {
@@ -66,14 +65,13 @@ const displayDetails = (details) => {
     phoneDetails.textContent = '';
 
     const div = document.createElement('div');
-    div.classList.add('d-md-flex', 'justify-content-center');
+    div.classList.add('row','justify-content-center','align-items-center');
     div.innerHTML = `
-    <div class="w-50">
-        <img class= "w-100" src="${details.image}" class="card-img-top img-thumbnail" alt="...">
-    </div>
-    <div class="card-body overflow-auto w-50">
+    <img class= "w-50 " src="${details.image}" class="card-img-top img-thumbnail" alt="...">
+
+    <div class="card-body overflow-auto w-100 ">
       <h4 class="card-title">Phone Details</h4>
-      <p>${details.releaseDate}</p>
+      <p>${details.releaseDate? details.releaseDate:'Not Available'}</p>
       <h4>More Details:</h4>
       <ul>
         <li>Chipset: ${details.mainFeatures.chipSet}
@@ -82,15 +80,14 @@ const displayDetails = (details) => {
         </li>
         <li>Memory: ${details.mainFeatures.memory}
         </li>
-        <li>Bluetooth: ${details.others.Bluetooth}</li>
+        <li>Bluetooth: ${details.others.bluetooth}</li>
         <li>GPS: ${details.others.GPS}</li>
         <li>Sensors: ${details.mainFeatures.sensors}</li>
       </ul>
     </div>
     `;
     phoneDetails.appendChild(div);
-    window.scrollTo(0,0);
-    
+    window.scrollTo(0,0); 
 }
 
 

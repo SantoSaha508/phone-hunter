@@ -9,3 +9,7 @@
 .error{
     display: none;
 }
+
+#spinnerLoad{
+    display: none;
+}
