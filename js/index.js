@@ -25,7 +25,6 @@ const displaySearchResult = phones => {
     searchResult.textContent = '';
 
     phonesSlice.forEach(phone => {
-        //console.log(phone);
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
@@ -56,24 +55,23 @@ const displayDetails = (details) => {
 
     const div = document.createElement('div');
     div.innerHTML = `
-    <img src="${details.image}" class="card-img-top" alt="...">
+    <img src="${details.image}" class="card-img-top img-thumbnail" alt="...">
     <div class="card-body overflow-auto">
       <h4 class="card-title">Phone Details</h4>
       <p>${details.releaseDate}</p>
-      <h6>Chipset:</h6>
-      <p>${details.mainFeatures.chipSet}</p>
-      <h6>Display:</h6>
-      <p>${details.mainFeatures.displaySize}</p>
-      <h6>Memory:</h6>
-      <p>Memory:${details.mainFeatures.memory}</p><h6>Bluetooth:</h6>
-      <p>${details.others.Bluetooth}</p>
-      <h6>GPS:</h6>
-      <p>${details.others.GPS}</p>
-      <h6>Sensors:</h6>
-      <p class="">${details.mainFeatures.sensors}</p>
+
+      <h6>Chipset: ${details.mainFeatures.chipSet}</h6>
+      <p>Display: ${details.mainFeatures.displaySize}</p>
+      <h6>Memory: ${details.mainFeatures.memory}</h6>
+      <p>Bluetooth: ${details.others.Bluetooth}</p>
+      <h6>GPS: ${details.others.GPS}</h6>
+      <p></p>
+      <h6></h6>
+      <p>Sensors: ${details.mainFeatures.sensors}</p>
     </div>
     `;
     phoneDetails.appendChild(div);
+    window.scrollTo(0,0);
     
 }
 
