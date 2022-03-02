@@ -7,6 +7,8 @@ const searchPhone = () => {
     searchField.value = '';
     // show error massage
     if(searchText == 'oppo' || searchText == 'samsung' || searchText == 'iphone' ||searchText == 'huawei'){
+        const phoneDetails = document.getElementById('phone-details');
+        phoneDetails.textContent = ''; 
         const error = document.getElementById('warning')
         error.style.display = "none";
         // load data
@@ -14,7 +16,8 @@ const searchPhone = () => {
         fetch(url)
         .then(res => res.json())
         .then(data => displaySearchResult(data.data))
-        }
+
+    }
     else{
         const error = document.getElementById('warning')
         error.style.display = "block";
@@ -23,9 +26,7 @@ const searchPhone = () => {
         searchResult.textContent = '';
 
         const phoneDetails = document.getElementById('phone-details');
-        phoneDetails.textContent = '';
-
-        
+        phoneDetails.textContent = ''; 
     }
    
 }
