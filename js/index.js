@@ -3,18 +3,29 @@ const searchPhone = () => {
     const searchText = searchField.value;
     // clear search bar
     searchField.value = '';
-    // load data
-    const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
-    fetch(url)
-    .then(res => res.json())
-    .then(data => displaySearchResult(data.data))
-
+    if(searchText == ''){
+        const error = document.getElementById('warning')
+        error.style.display = "block";
+    }
+    else{
+        const error = document.getElementById('warning')
+        error.style.display = "none";
+        // load data
+        const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
+        fetch(url)
+        .then(res => res.json())
+        .then(data => displaySearchResult(data.data))
+        }
 }
 
 const displaySearchResult = phones => {
+    const phonesSlice = phones.slice(0, 20);
+    console.log(phonesSlice.length);
     const searchResult = document.getElementById('search-result');
-    searchResult.innerHTML = '';
-    phones.forEach(phone => {
+    searchResult.textContent = '';
+
+    phonesSlice.forEach(phone => {
+        //console.log(phone);
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
@@ -42,18 +53,27 @@ const phoneDetails = (phoneId) => {
 const displayDetails = (details) => {
     const phoneDetails = document.getElementById('phone-details');
     phoneDetails.textContent = '';
+
     const div = document.createElement('div');
     div.innerHTML = `
     <img src="${details.image}" class="card-img-top" alt="...">
-    <div class="card-body">
+    <div class="card-body overflow-auto">
       <h4 class="card-title">Phone Details</h4>
       <p>${details.releaseDate}</p>
+      <h6>Chipset:</h6>
       <p>${details.mainFeatures.chipSet}</p>
+      <h6>Display:</h6>
       <p>${details.mainFeatures.displaySize}</p>
-      <p>${details.mainFeatures.memory}</p>
+      <h6>Memory:</h6>
+      <p>Memory:${details.mainFeatures.memory}</p><h6>Bluetooth:</h6>
+      <p>${details.others.Bluetooth}</p>
+      <h6>GPS:</h6>
+      <p>${details.others.GPS}</p>
+      <h6>Sensors:</h6>
+      <p class="">${details.mainFeatures.sensors}</p>
     </div>
     `;
     phoneDetails.appendChild(div);
-
+    
 }
 
